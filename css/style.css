@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    height: 1000px;
+    position: fixed !important; 
+    width: 100% !important;
+}
+
+#map {
+    position: absolute  !important; 
+    height: 10% !important;
+    width: 10% !important;
+}
