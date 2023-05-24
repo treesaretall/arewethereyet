@@ -5,11 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="'stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-    
+<body class="body">
+    <div id="map"></div>
+    <div class="contianer">
+        <br><br>
+        <h1 class="text">Nearby Placer Finder</h1>
+        <div class="form-group">
+            <label for="location">Enter Location:</label>
+            <br><br>
+            <input type="text" id="autocomplete" placeholder="Enter Location">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for ='type'> Select Place Type:</label>
+            <br>
+            <select class="form-control" name="" id="type">
+                <option id="bank">bank</option>
+                <option id="park">park</option>
+            </select>
+        </div>
+        <br><br>
+        <table class="table" id="places"></table>
+    </div>
 
 <script src="./js/script.js"></script>
+
 </body>
 </html>
