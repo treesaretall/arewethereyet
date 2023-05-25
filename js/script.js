@@ -1,6 +1,10 @@
 let map;
 let service;
 let infowindow;
+let openInfoWindow;
+let selectedType; // Define selectedType variable
+let markers = []; // Keep track of markers, erases old ones when type changes.
+
 
 function initMap() {
   autocomplete = new google.maps.places.Autocomplete(
@@ -18,6 +22,8 @@ function initMap() {
 
 document.getElementById('type').onchange = searchNearbyPlaces;
 
+
+
 function searchNearbyPlaces() {
   document.getElementById('places').innerHTML = '';
 
@@ -28,22 +34,30 @@ function searchNearbyPlaces() {
   map.setZoom(15);
 
   service = new google.maps.places.PlacesService(map);
+
+  selectedType = document.getElementById('type').value; // Assign the selected type
+
   service.nearbySearch({
     location: place.geometry.location,
     radius: '5000',
-    type: [document.getElementById('type').value]
-  }, callback);
+    type: selectedType // Use the selected type for filtering
+}, callback);
 }
 
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     console.log(results.length);
+
+     // Clear existing markers from the map
+     clearMarkers();
+
     for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
+      if (results[i].types.includes(selectedType)) {
+        createMarker(results[i], selectedType);
+      }
     }
   }
 }
-
 
 function createMarker(place) {
 
@@ -51,7 +65,7 @@ function createMarker(place) {
   let table = document.getElementById('places');
   let row = table.insertRow();
   let cell1 = row.insertCell(0);
-  cell1.innerHTML = place.name
+  cell1.innerHTML = place.name;
   if (place.photos) {
     let photoUrl = place.photos[0].getUrl();
     let cell2 = row.insertCell(1);
@@ -61,7 +75,37 @@ function createMarker(place) {
     let cell2 = row.insertCell(1);
     cell2.innerHTML = "<img width='300' height='300' src='" + photoUrl + "'/>";
   }
+  
+//added in marker for infoWindow
+  const marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+});
+//provided content for the pins (still refining)
+const content = `
+    <div>
+      <h3>${place.name}</h3>
+      <p>${place.formatted_address}</p>
+      <p>Rating: ${place.rating}</p>
+      <p>${place.types.join(', ')}</p>
+    </div>
+  `;
+
+  const infoWindow = new google.maps.InfoWindow({
+    content: content
+  });
+
+  marker.addListener('click', function () {
+    if (openInfoWindow) {
+      openInfoWindow.close();
+    }
+    infoWindow.open(map, marker);
+    openInfoWindow = infoWindow;
+  });
+
+  markers.push(marker); // Add marker to the markers array
 }
+
 
 function loadGoogleMapsAPI(callback) {
     const script = document.createElement("script");
