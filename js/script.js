@@ -5,7 +5,7 @@ let infowindow;
 function initMap() {
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById('autocomplete'), {
-      types: ['geocode']
+      types: ['(cities)']
     });
 
   autocomplete.addListener('place_changed', searchNearbyPlaces);
@@ -44,12 +44,14 @@ function callback(results, status) {
   }
 }
 
+
 function createMarker(place) {
+
   console.log(place);
   let table = document.getElementById('places');
   let row = table.insertRow();
   let cell1 = row.insertCell(0);
-  cell1.innerHTML = place.name;
+  cell1.innerHTML = place.name
   if (place.photos) {
     let photoUrl = place.photos[0].getUrl();
     let cell2 = row.insertCell(1);
