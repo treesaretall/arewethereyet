@@ -59,6 +59,13 @@ function callback(results, status) {
   }
 }
 
+function clearMarkers() {
+  for (let i = 0; i < markers.length; i++){
+    markers[i].setMap(null);
+  }
+  markers=[];
+}
+
 function createMarker(place) {
 
   console.log(place);
@@ -82,7 +89,7 @@ function createMarker(place) {
     position: place.geometry.location
 });
 //provided content for the pins (still refining)
-const content = `
+const content = `'
     <div>
       <h3>${place.name}</h3>
       <p>${place.formatted_address}</p>
