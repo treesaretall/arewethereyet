@@ -28,7 +28,9 @@ function searchNearbyPlaces() {
   document.getElementById('places').innerHTML = '';
 
   let place = autocomplete.getPlace();
-  console.log(place);
+  var inputValue = place.name
+  getWeather(inputValue);
+  
 
   map.setCenter(place.geometry.location);
   map.setZoom(15);
@@ -68,7 +70,7 @@ function clearMarkers() {
 
 function createMarker(place) {
 
-  console.log(place);
+ 
   let table = document.getElementById('places');
   let row = table.insertRow();
   let cell1 = row.insertCell(0);
@@ -121,6 +123,7 @@ function loadGoogleMapsAPI(callback) {
     script.defer = true;
     script.async = true;
     document.head.appendChild(script);
+
 }
 
 loadGoogleMapsAPI("initMap");
