@@ -18,8 +18,15 @@ header {
     width: 100% !important;
 }
 
-/* #map {
-    position: absolute  !important; 
-    height: 10% !important;
-    width: 10% !important;
-} */
+#map {
+    min-height: 400px;
+}
+
+.table-style {
+    overflow-y: auto;
+    height: 600px;
+}
+
+.search {
+    padding: 10px;
+}
