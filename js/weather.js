@@ -17,6 +17,8 @@ function getWeather(city) {
    .then(function displayWeather(data) {
     const weatherLine1 = document.createElement('div');
     weatherDisplay.appendChild(weatherLine1);
+    let displayWeatherDiv = document.querySelector('.display-weather');
+    displayWeatherDiv
     console.log(data.main.temp)
    });
 }
