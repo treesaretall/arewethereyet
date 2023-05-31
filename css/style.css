@@ -14,7 +14,6 @@ header {
 
 .container {
     height: 1000px;
-    position: fixed !important; 
     width: 100% !important;
 }
 
