@@ -17,6 +17,15 @@ header {
     width: 100% !important;
 }
 
-/*#map {
-    min-height: 50px;
-}*/
+#map {
+    min-height: 400px;
+}
+
+.table-style {
+    overflow-y: auto;
+    height: 600px;
+}
+
+.search {
+    padding: 10px;
+}
