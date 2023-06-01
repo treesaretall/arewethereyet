@@ -6,6 +6,12 @@ html, body {
 }
 
 header {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(mountain.jpeg);
+    background-position: bottom;
+    background-size: cover;
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;
