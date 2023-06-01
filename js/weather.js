@@ -28,9 +28,9 @@ function getWeather(city) {
     weatherHumidityLine.classList.add('weather-humidity');
     weatherWindLine.classList.add('weather-wind');
 
-    weatherTempLine.textContent = Math.round(data.main.temp) + '°F';
-    weatherHumidityLine.textContent = data.main.humidity + '%';
-    weatherWindLine.textContent = Math.round(data.wind.speed) + ' mph';
+    weatherTempLine.textContent = "Temperature: " + Math.round(data.main.temp) + '°F';
+    weatherHumidityLine.textContent = "Humidity: " + data.main.humidity + '%';
+    weatherWindLine.textContent = "Wind Speed: " + Math.round(data.wind.speed) + ' mph';
 
     weatherDisplay.appendChild(weatherIconLine);
     weatherDisplay.appendChild(weatherTempLine);
