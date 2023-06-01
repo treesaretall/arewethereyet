@@ -15,10 +15,29 @@ function getWeather(city) {
         }   
    })
    .then(function displayWeather(data) {
-    const weatherLine1 = document.createElement('div');
-    weatherDisplay.appendChild(weatherLine1);
     let displayWeatherDiv = document.querySelector('.display-weather');
     displayWeatherDiv
+    let weatherIconNum = data.weather[0].icon
+    let weatherIcon = `https://openweathermap.org/img/w/${weatherIconNum}.png`
+    let weatherTempLine = document.createElement('div');
+    let weatherHumidityLine = document.createElement('div');
+    let weatherWindLine = document.createElement('div');
+    const weatherIconLine = document.createElement('img');
+    weatherDisplay.appendChild(weatherIconLine);
+    weatherIconLine.appendChild(weatherTempLine);
+    weatherIconLine.appendChild(weatherHumidityLine);
+    weatherIconLine.appendChild(weatherWindLine);
+    weatherIconLine.setAttribute('src', weatherIcon);
+    weatherTempLine.classList.add('weather-temp');
+    weatherHumidityLine.classList.add('weather-humidity');
+    weatherWindLine.classList.add('weather-wind')
+        
+
+    document.querySelector('.weather-temp').innerHTML = Math.round(data.main.temp) + '°F';
+    document.querySelector('.weather-humidity').innerHTML = data.main.humidity + '%';
+    document.querySelector('.weather-wind').innerHTML = Math.round(data.wind.speed) + ' mph';
+
+
     console.log(data.main.temp)
    });
 }
