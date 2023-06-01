@@ -4,8 +4,45 @@ html, body {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+ul{
+    list-style: none;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    color: whitesmoke;
+
+}
+.nav-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.nav-links li{
+    margin: 0 30px;
+    font-weight: bold;
+}
 
 header {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(mountain.jpeg);
+    background-position: bottom;
+    background-size: cover;
+    color: whitesmoke;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
