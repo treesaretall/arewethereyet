@@ -98,12 +98,13 @@ const request = {
 const service = new google.maps.places.PlacesService(map);
 service.getDetails(request, (placeResult, status) => {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
+    const phoneNumber = placeResult.formatted_phone_number ? placeResult.formatted_phone_number : 'Not available';
     const content = `
       <div>
         <h3>${placeResult.name}</h3>
         <p>${placeResult.formatted_address}</p>
         <p>Rating: ${placeResult.rating}</p>
-        <p>${placeResult.formatted_phone_number}</p>
+        <p>Phone Number: ${phoneNumber}</p>
         <div class="photos">
         ${placeResult.photos.map(photo => `<img src="${photo.getUrl({ maxWidth: 100 })}"/>`).join('')}
 </div>
