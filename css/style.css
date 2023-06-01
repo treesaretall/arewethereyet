@@ -24,6 +24,8 @@ header {
 .table-style {
     overflow-y: auto;
     height: 600px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .search {
@@ -32,4 +34,8 @@ header {
 
 .display-weather {
     padding: 10px;
+}
+
+h3 {
+    padding-left: 10px;
 }
