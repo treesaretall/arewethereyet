@@ -8,32 +8,6 @@ a {
     text-decoration: none;
     color: whitesmoke;
 }
-ul{
-    list-style: none;
-}
-
-.navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 20px;
-    color: whitesmoke;
-
-}
-.nav-links{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    cursor: pointer;
-}
-.nav-links li{
-    margin: 0 30px;
-    font-weight: bold;
-}
 
 header {
     width: 100vw;
@@ -61,8 +35,18 @@ header {
 .table-style {
     overflow-y: auto;
     height: 600px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .search {
     padding: 10px;
+}
+
+.display-weather {
+    padding: 10px;
+}
+
+h3 {
+    padding-left: 10px;
 }
