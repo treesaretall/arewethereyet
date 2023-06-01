@@ -41,7 +41,7 @@ function searchNearbyPlaces() {
 
   service.nearbySearch({
     location: place.geometry.location,
-    radius: '5000',
+    radius: '9000',
     type: selectedType // Use the selected type for filtering
 }, callback);
 }
