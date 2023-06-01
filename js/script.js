@@ -86,36 +86,58 @@ function createMarker(place) {
   }
   
 //added in marker for infoWindow
-  const marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
+const marker = new google.maps.Marker({
+  map: map,
+  position: place.geometry.location
 });
-//provided content for the pins (still refining)
-const content = `'
-    <div>
-      <h3>${place.name}</h3>
-      <p>${place.formatted_address}</p>
-      <p>Rating: ${place.rating}</p>
-      <p>${place.types.join(', ')}</p>
-    </div>
-  `;
+//API request for location information
+const request = {
+  placeId: place.place_id,
+  fields: ['name', 'formatted_address', 'rating', 'types', 'formatted_phone_number', 'photos', 'reviews']
+};
 
-  const infoWindow = new google.maps.InfoWindow({
-    content: content
-  });
+// Provided content for the pins
+const service = new google.maps.places.PlacesService(map);
+service.getDetails(request, (placeResult, status) => {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    const phoneNumber = placeResult.formatted_phone_number ? placeResult.formatted_phone_number : 'Not available';
+    const content = `
+      <div>
+        <h3>${placeResult.name}</h3>
+        <p>${placeResult.formatted_address}</p>
+        <p>Rating: ${placeResult.rating}</p>
+        <p>Phone Number: ${phoneNumber}</p>
+        <div class="photos">
+        ${placeResult.photos.map(photo => `<img src="${photo.getUrl({ maxWidth: 100 })}"/>`).join('')}
+</div>
+      <div class="reviews">
+        <h4>Reviews:</h4>
+         ${placeResult.reviews.map(review => `
+          <p>Author: ${review.author_name}</p>
+          <p>Rating: ${review.rating}</p>
+          <p>Text: ${review.text}</p>
+        <hr>
+            `).join('')}
+</div>
+      </div>
+    `;
 
-  marker.addListener('click', function () {
-    if (openInfoWindow) {
-      openInfoWindow.close();
-    }
-    infoWindow.open(map, marker);
-    openInfoWindow = infoWindow;
-  });
+    const infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
 
-  markers.push(marker); // Add marker to the markers array
+    marker.addListener('click', function () {
+      if (openInfoWindow) {
+        openInfoWindow.close();
+      }
+      infoWindow.open(map, marker);
+      openInfoWindow = infoWindow;
+    });
+
+    markers.push(marker); // Add marker to the markers array
+  }
+});
 }
-
-
 function loadGoogleMapsAPI(callback) {
     const script = document.createElement("script");
     const apiKey = 'AIzaSyBjB0EtfnEBOQViQmBwAfKNLtZ6HSDcfas'
