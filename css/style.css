@@ -28,7 +28,7 @@ input {
     color: var(--coral);
 }
 
-h1, html {
+h1, html, td {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
@@ -64,8 +64,28 @@ header {
     min-height: 400px;
 }
 
+td {
+    background-color: var(--lavender);
+    border: 3px solid var(--bluegray);
+    color: var(--dark);
+    font-weight: bold;
+    font-size:1.5em;
+}
+
+tbody {
+    border: none;
+    align-content: center;
+}
+
+table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .table-style {
     overflow-y: auto;
+    overflow-x: auto;
     height: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
