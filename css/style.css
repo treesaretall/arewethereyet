@@ -1,12 +1,44 @@
+:root {
+    --dark: #0b274d;
+    --graypurp: #846b8a;
+    --coral: #ce747c;
+    --bluegray: #374567;
+    --purple: #3b314e;
+    --pink: #9f6371;
+    --lightpink: #fef4f6;
+    --brick: #6f3d42;
+    --gray: #f8f6fc;
+    --lavender: #7c7294;
+  }
+
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--dark);
+    color: var(--gray);
 }
+
+label {
+    color: var(--gray);
+    font-size: large;
+}
+
+input {
+    color: var(--coral);
+}
+
+h1, html {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
 a {
     text-decoration: none;
-    color: whitesmoke;
+    color: var(--lightpink);
+}
+
+a:hover {
+    color: var(--coral);
 }
 
 header {
@@ -15,7 +47,7 @@ header {
     background-image: url("../images/mountain.jpeg");
     background-position: bottom;
     background-size: cover;
-    color: whitesmoke;
+    color: var(--lightpink);
     text-align: center;
     display: flex;
     flex-direction: column;
