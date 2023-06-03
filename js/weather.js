@@ -1,4 +1,4 @@
-const apiKey = '753f239ca28f430c26c0ed9a292317c8';
+const apiKey = WeatherApiKey;
 const weatherDisplay = document.querySelector('.display-weather');
 
 function getWeather(city) {

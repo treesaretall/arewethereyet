@@ -140,7 +140,7 @@ service.getDetails(request, (placeResult, status) => {
 }
 function loadGoogleMapsAPI(callback) {
     const script = document.createElement("script");
-    const apiKey = 'AIzaSyBjB0EtfnEBOQViQmBwAfKNLtZ6HSDcfas'
+    const apiKey = GoogleApiKey
     script.src = "https://maps.googleapis.com/maps/api/js?key=" + apiKey + "&libraries=places&callback=" + callback;
     script.defer = true;
     script.async = true;
