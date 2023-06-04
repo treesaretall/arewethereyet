@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +16,6 @@
         href="https://fonts.googleapis.com/css2?family=Lato">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body class="body">
     <header>
         <h1>Are We There Yet?</h1>
@@ -39,23 +37,23 @@
                 </select>
             </div>
         </div>
+        <div id="searchedCitiesContainer">
+            <label for="searchedCities">Searched Cities:</label>
+            <select id="searchedCities"></select>
+        </div>
         <div id="map" class="cell small-8"></div>
         <div class="cell small-4">
-            <h3>Current Weather:</h3>
+            <h3 id="white">Current Weather:</h3>
             <div class="display-weather"></div>
         </div>
         <div class="table-style cell small-8">
             <table id="places"></table>
         </div>
     </div>
-
     <script>
         $(document).foundation();
     </script>
-    <script src='./js/api.js'></script>
     <script src="./js/script.js"></script>
     <script src="./js/weather.js"></script>
-
 </body>
-
 </html>
