@@ -197,3 +197,4 @@ function loadGoogleMapsAPI(callback) {
   document.head.appendChild(script);
 }
 loadGoogleMapsAPI('initMap');
+generateHistoryDropdown();
