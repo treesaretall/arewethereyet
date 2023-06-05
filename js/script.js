@@ -82,6 +82,7 @@ function populateDataFromHistory(historyCities) {
   service = new google.maps.places.PlacesService(map);
   selectedType = apiData.type;
   service.nearbySearch(apiData, callback);
+  getWeather(historyCities);
 }
 //----------------------------------
 function callback(results, status) {
@@ -89,6 +90,7 @@ function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     // Clear existing markers from the map
     clearMarkers();
+    document.getElementById("places").innerHTML = "";
     for (var i = 0; i < results.length; i++) {
       if (results[i].types.includes(selectedType)) {
         createMarker(results[i]);
@@ -104,7 +106,7 @@ function clearMarkers() {
 }
 function createMarker(place) {
   console.log(place);
-  let table = document.getElementById('places');
+  let table = document.getElementById("places");
   let row = table.insertRow();
   let cell1 = row.insertCell(0);
   cell1.innerHTML = place.name;
