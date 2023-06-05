@@ -26,6 +26,7 @@ document.getElementById('searchedCities').onchange = function () {
 function searchNearbyPlaces() {
   document.getElementById('places').innerHTML = '';
   let place = autocomplete.getPlace();
+  document.getElementById("autocomplete").value = "";
   var inputValue = place.name;
   getWeather(inputValue);
   map.setCenter(place.geometry.location);
